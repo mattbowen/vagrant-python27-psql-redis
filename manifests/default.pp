@@ -1,4 +1,6 @@
-Exec{path=>"/usr/bin:/usr/sbin"}
+Exec {
+  path => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+}
 stage { "update": before => Stage["pre"] }
 stage { "pre": before => Stage["main"] }
 
@@ -9,14 +11,15 @@ class aptupdate {
 class python {
     package {
         "build-essential": ensure => latest;
-        "python": ensure => "2.6.5-0ubuntu1";
-        "python-dev": ensure => "2.6.5-0ubuntu1";
+        "python": ensure => "2.7-6ubuntu1";
+        "python-dev": ensure => "2.7-6ubuntu1";
         "python-setuptools": ensure => installed;
-	"libreadline5-dev": ensure => present;
-	"libssl-dev": ensure => present;
-	"python-openssl": ensure => present;
-	"sqlite3": ensure => present;
-	"libsqlite3-dev": ensure => present;
+        "python-virtualenv": ensure => installed;
+        "libreadline5-dev": ensure => present;
+        "libssl-dev": ensure => present;
+        "python-openssl": ensure => present;
+        "sqlite3": ensure => present;
+        "libsqlite3-dev": ensure => present;
     }
     exec { "easy_install pip":
         path => "/usr/local/bin:/usr/bin:/bin",
@@ -74,14 +77,14 @@ class { "python": stage => "pre" }
 class { "pildeps": stage => "pre" }
 class { "vcs": stage => "pre" }
 
-class lucid32 {
+class maverick64 {
   include aptupdate
   include python
   include pildeps
   include vcs
-  include buildpythons
+#  include buildpythons
   
 
 }
 
-include lucid32
+include maverick64
