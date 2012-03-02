@@ -11,8 +11,8 @@ class aptupdate {
 class python {
     package {
         "build-essential": ensure => latest;
-        "python": ensure => "2.7-6ubuntu1";
-        "python-dev": ensure => "2.7-6ubuntu1";
+        "python2.7": ensure => latest;
+        "python2.7-dev": ensure => latest;
         "python-setuptools": ensure => installed;
         "python-virtualenv": ensure => installed;
         "libreadline5-dev": ensure => present;
