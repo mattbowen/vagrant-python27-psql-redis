@@ -8,26 +8,36 @@ class aptupdate {
       exec { "/usr/bin/apt-get update":}
 }
 
-class python {
+class devlibs {
     package {
         "build-essential": ensure => latest;
-        "python2.7": ensure => latest;
-        "python2.7-dev": ensure => latest;
-        "python-setuptools": ensure => installed;
-        "python-virtualenv": ensure => installed;
-        "libreadline5-dev": ensure => present;
+        "libreadline-gplv2-dev": ensure => present;
         "libssl-dev": ensure => present;
-        "python-openssl": ensure => present;
         "sqlite3": ensure => present;
         "libsqlite3-dev": ensure => present;
     }
-    exec { "easy_install pip":
-        path => "/usr/local/bin:/usr/bin:/bin",
-        refreshonly => true,
-        require => Package["python-setuptools"],
-        subscribe => Package["python-setuptools"],
-    }
 }
+
+class { "python::dev": version => "2.7" }
+python::venv::isolate { "/vagrant/projectenv": 
+  version => "2.7"
+}
+
+class { "postgresql::server": version => "9.1",
+                    listen_addresses => 'localhost',
+                    max_connections => 5,
+                    shared_buffers => '24MB',
+}
+
+postgresql::user { "vagrant": ensure => present,
+                    superuser => true,
+                    createdb => true,
+                    createrole => true,
+}
+
+postgresql::database { "vagrant":
+}
+
 
 class pildeps {
   package { 
@@ -73,15 +83,17 @@ class buildpythons {
 
 }
 class { "aptupdate": stage => "update"}
-class { "python": stage => "pre" }
+class { "devlibs": stage => "pre" }
 class { "pildeps": stage => "pre" }
 class { "vcs": stage => "pre" }
 
 class maverick64 {
   include aptupdate
-  include python
+  include devlibs
   include pildeps
   include vcs
+  include python::venv
+  include postgresql::server
 #  include buildpythons
   
 
