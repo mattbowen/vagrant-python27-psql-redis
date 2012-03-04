@@ -36,6 +36,7 @@ postgresql::user { "vagrant": ensure => present,
 }
 
 postgresql::database { "vagrant":
+  require => Postgresql::User["vagrant"]
 }
 
 
