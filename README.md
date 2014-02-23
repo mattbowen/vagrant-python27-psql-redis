@@ -12,8 +12,8 @@ The goal is to have a reasonably modern VM for developing python software to lau
 
 To get going:
 
-* Install [virtual box](http://www.virtualbox.org/wiki/Downloads) — The base box targets 4.1.8, so you should have that version.
-* Install [vagrant](http://vagrantup.com/) following the instructions on the homepage. If you're lucky like me, you'll need to upgrade ruby gems by doing sudo gem update --system
+* Install [virtual box](http://www.virtualbox.org/wiki/Downloads)
+* Install [vagrant](http://vagrantup.com/) following the instructions on the homepage.
 * clone this repo
 * run "vagrant up" in the directory you cloned
 * enter your password so that NFS will work
