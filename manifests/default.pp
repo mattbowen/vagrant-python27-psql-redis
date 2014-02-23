@@ -12,24 +12,30 @@ class devlibs {
     package {
         "build-essential": ensure => latest;
         "libreadline-gplv2-dev": ensure => present;
+        "libncursesw5-dev": ensure=>present;
+        "libc6-dev": ensure=>present;
         "libssl-dev": ensure => present;
         "sqlite3": ensure => present;
         "libsqlite3-dev": ensure => present;
+        "libz-dev": ensure=>present;
+        "libgdbm-dev": ensure=>present;
+        "libpng-dev": ensure => present;
+        "tk-dev": ensure=>present;
         "python-dev": ensure => present;
+        "python-profiler": ensure=>present;
+        "python-virtualenv": ensure=>present;
     }
 }
 
-class { "python::dev": version => "2.7" }
+# python::venv::isolate { "/vagrant/projectenv": 
+#   version => "2.7"
+# }
 
-python::venv::isolate { "/vagrant/projectenv": 
-  version => "2.7"
-}
-
-file { '/home/vagrant/projectenv':
-   ensure => 'link',
-   target => '/vagrant/projectenv',
-   require => Python::Venv::Isolate["/vagrant/projectenv"],
-}
+# file { '/home/vagrant/projectenv':
+#    ensure => 'link',
+#    target => '/vagrant/projectenv',
+#    require => Python::Venv::Isolate["/vagrant/projectenv"],
+# }
 
 class { "postgresql::server": version => "9.1",
                     listen_addresses => 'localhost',
@@ -76,7 +82,6 @@ class precise64 {
   include devlibs
   include pildeps
   include vcs
-  include python::venv
   include postgresql::server 
 }
 
