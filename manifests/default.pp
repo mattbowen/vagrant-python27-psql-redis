@@ -22,6 +22,7 @@ class devlibs {
         "libpng-dev": ensure => present;
         "tk-dev": ensure=>present;
         "python-dev": ensure => present;
+        "libcairo2-dev": ensure => present;
         "python-profiler": ensure=>present;
         "python-virtualenv": ensure=>present;
     }
