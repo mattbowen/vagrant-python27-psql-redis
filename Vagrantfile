@@ -23,6 +23,7 @@ Vagrant::Config.run do |config|
   # computers to access the VM, whereas host only networking does not.
   # config.vm.forward_port "http", 80, 8080
   config.vm.forward_port 8000, 8000
+  config.vm.forward_port 8888, 8888
 #  config.vm.forward_port 8080, 8080
 
   config.vm.network :hostonly, "33.33.33.10"

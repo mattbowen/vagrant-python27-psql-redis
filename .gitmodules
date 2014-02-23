@@ -6,7 +6,7 @@
 	url = https://github.com/puppetmodules/puppet-module-redis.git
 [submodule "modules/python"]
 	path = modules/python
-	url = https://github.com/puppetmodules/puppet-module-python.git
+	url = https://github.com/mattbowen/puppet-module-python.git 
 [submodule "modules/postgresql"]
 	path = modules/postgresql
 	url = git://github.com/mattbowen/puppet-module-postgresql.git
