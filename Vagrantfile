@@ -15,9 +15,6 @@ Vagrant::Config.run do |config|
   # config.vm.boot_mode = :gui
 
   config.ssh.forward_agent = true
-  # Assign this VM to a host only network IP, allowing you to access it
-  # via the IP.
-  # config.vm.network "33.33.33.10"
 
   # Forward a port from the guest to the host, which allows for outside
   # computers to access the VM, whereas host only networking does not.
