@@ -25,6 +25,14 @@ class devlibs {
         "libcairo2-dev": ensure => present;
         "python-profiler": ensure=>present;
         "python-virtualenv": ensure=>present;
+        "libxml2-dev": ensure=>present;
+        "libxslt-dev": ensure=>present;
+        "libblas-dev": ensure=>present;
+        "gfortran": ensure=>present;
+        "libblas3gf": ensure=>present;
+        "liblapack-dev": ensure=>present;
+        "libsuitesparse-dev": ensure=>present;
+        "swig": ensure=>present;
     }
 }
 
