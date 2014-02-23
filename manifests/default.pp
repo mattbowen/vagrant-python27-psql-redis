@@ -15,6 +15,7 @@ class devlibs {
         "libssl-dev": ensure => present;
         "sqlite3": ensure => present;
         "libsqlite3-dev": ensure => present;
+        "python-dev": ensure => present;
     }
 }
 
@@ -70,7 +71,7 @@ class { "devlibs": stage => "pre" }
 class { "pildeps": stage => "pre" }
 class { "vcs": stage => "pre" }
 
-class maverick64 {
+class precise64 {
   include aptupdate
   include devlibs
   include pildeps
@@ -79,4 +80,4 @@ class maverick64 {
   include postgresql::server 
 }
 
-include maverick64
+include precise64
