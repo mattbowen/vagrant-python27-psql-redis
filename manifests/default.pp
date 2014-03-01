@@ -77,6 +77,13 @@ class pildeps {
   }
 }
 
+class cliessentials {
+  package {
+    "vim-nox": ensure => present;
+    "screen": ensure => present;
+    "zsh": ensure=>present;
+ }
+}
 class vcs {
 
   package { "git-core":
@@ -95,6 +102,7 @@ class precise64 {
   include devlibs
   include pildeps
   include vcs
+  include cliessentials
   include postgresql::server 
 }
 
