@@ -33,6 +33,10 @@ class devlibs {
         "liblapack-dev": ensure=>present;
         "libsuitesparse-dev": ensure=>present;
         "swig": ensure=>present;
+        "libmemcached-dev": ensure=>present;
+        "libcurl4-gnutls-dev": ensure=>present;
+        "pandoc": ensure=>present;
+        "libevent-dev": ensure=>present;
     }
 }
 
